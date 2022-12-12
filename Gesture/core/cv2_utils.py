@@ -1,10 +1,10 @@
 '''
 Author: linin00
 Date: 2022-12-07 18:40:29
-LastEditTime: 2022-12-07 19:01:34
+LastEditTime: 2022-12-13 03:15:23
 LastEditors: linin00
 Description: 
-FilePath: /openSource-Final-Project/Gesture Recognition and Control/utils/cv2_utils.py
+FilePath: /open/Gesture/core/cv2_utils.py
 
 '''
 
@@ -45,3 +45,6 @@ def waitKey(time, key):
 # 显示图片
 def showImage(img, name='image') :
   cv2.imshow(name, img)
+
+def destroy():
+  cv2.destroyAllWindows() # 关闭窗口
