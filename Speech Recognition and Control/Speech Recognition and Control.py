@@ -88,7 +88,7 @@ def attack(text):  # 根据语音内容释放技能
         # 根据判断结果，决定是否进行释放技能
 
 
-def start(key):  # 启动函数，当按下tab键时开始录音并识别，根据识别结果决定释放某个技能
+def start(key):  # 开始函数，当按下tab键时开始录音并识别，根据识别结果决定是进行普通攻击还是释放大招
     if key == Key.tab:
         record(2)  # 暂定录音时间2s，可按需更改
         text = getSpeak()
