@@ -5,13 +5,12 @@
 1. Skills List
 
     1. Fireball
-    2. Snowball
+    2. Snowball (Cancelled)
     3. TNT
     4. Lightning
-    5. Cage
-    6. Ice Spikes(Optional)
-
-2. Camera Setting
+    5. Ice Cage
+    
+2. Camera Setting(Cancelled, using manual camera)
 
 3. Armor Effect Design
 
