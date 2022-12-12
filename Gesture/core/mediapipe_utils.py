@@ -1,10 +1,10 @@
 '''
 Author: linin00
 Date: 2022-12-07 18:45:02
-LastEditTime: 2022-12-07 19:01:15
+LastEditTime: 2022-12-12 15:30:11
 LastEditors: linin00
 Description: 
-FilePath: /openSource-Final-Project/Gesture Recognition and Control/utils/mediapipe_utils.py
+FilePath: /open/Gesture/core/mediapipe_utils.py
 
 '''
 
@@ -61,6 +61,15 @@ class HandDetector():
     return res
   def _getLandmarks(self): # 返回识别的结果
     return self.__results.multi_hand_landmarks
+
+# 躯体识别
+class BodyDetector():
+  def __init__(self):
+    print('hello world')
+
+class BodyController():
+  def __init__(self):
+    print('hello world')
 
 if __name__ == '__main__':
   import sys
