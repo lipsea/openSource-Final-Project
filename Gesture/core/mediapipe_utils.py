@@ -1,7 +1,7 @@
 '''
 Author: linin00
 Date: 2022-12-07 18:45:02
-LastEditTime: 2022-12-12 15:30:11
+LastEditTime: 2022-12-12 15:33:07
 LastEditors: linin00
 Description: 
 FilePath: /open/Gesture/core/mediapipe_utils.py
@@ -11,6 +11,9 @@ FilePath: /open/Gesture/core/mediapipe_utils.py
 import cv2
 import mediapipe as mp
 import numpy as np
+import sys
+sys.path.append('./Gesture/core/type')
+from Gesture import Gesture
 
 # 手部识别
 class HandDetector():
@@ -69,6 +72,8 @@ class BodyDetector():
 
 class BodyController():
   def __init__(self):
+    print('hello world')
+  def process(self, img):
     print('hello world')
 
 if __name__ == '__main__':
