@@ -39,16 +39,14 @@ def my_handleWearing(_players: list, msg: str) -> bool:
         armor_h(id,x,y,z)
         print(msg)
         ready.get(username)[2] = True
-    for user in ready.values():
-        if user[0] == False:
+    for user in _players:
+        v = ready.get(user)
+        if not v[0] or not v[1] or not v[2]:
             return False
-        if user[1] == False:
-            return False
-        if user[2] == False:
-            return False
+    print('testing')
     return True
     
-def my_handleFighting(players: dict, msg: str) -> bool:
+def my_handleFighting(_players: dict, msg: str) -> bool:
     [username, skill] = msg.split(':')
     id = getID(username)
     if skill == Msg.FIREBALL:
@@ -63,4 +61,3 @@ def my_handleFighting(players: dict, msg: str) -> bool:
         [x,y,z] = players.get(username).get("coord_tnt")
         spell_TNT(id,x,y,z)
 
-    

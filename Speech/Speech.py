@@ -90,7 +90,7 @@ class Help():
             self.attack(text)
         exit()
 
-    def start():  # 开始函数，当按下tab键时开始录音并识别，根据识别结果决定是进行普通攻击还是释放大招
+    def start(self):  # 开始函数，当按下tab键时开始录音并识别，根据识别结果决定是进行普通攻击还是释放大招
         with Listener(on_press=self.task) as listener:
             listener.join()
 

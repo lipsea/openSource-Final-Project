@@ -1,7 +1,7 @@
 '''
 Author: linin00
 Date: 2022-12-13 01:34:09
-LastEditTime: 2022-12-13 22:58:43
+LastEditTime: 2022-12-13 23:54:35
 LastEditors: linin00
 Description: 
 FilePath: /open/Gesture/core/function.py
@@ -49,7 +49,7 @@ def my_wearing(body: BodyController, mqtt: Mqtt_async, prefix: str):
 from speech_utils import Speech
 def my_fighting(mqtt: Mqtt_async, prefix: str):
   speech = Speech(mqtt=mqtt, prefix=prefix)
-  mqtt.SUB(Topic.GAMEOVER, Topic.GAMEOVER)
+  mqtt.SUB(Topic.GAMEOVER)
   while True:
     msg, topic = mqtt.getMsg()
     if topic == Topic.GAMEOVER and msg == Msg.GAMEOVER:
