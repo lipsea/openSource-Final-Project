@@ -1,7 +1,7 @@
 '''
 Author: linin00
 Date: 2022-12-07 18:45:02
-LastEditTime: 2022-12-12 22:44:44
+LastEditTime: 2022-12-13 23:22:32
 LastEditors: linin00
 Description: 
 FilePath: /open/Gesture/core/mediapipe_utils.py
@@ -99,7 +99,7 @@ class BodyDetector():
 class BodyController():
   def __init__(self):
     self.__bodyDetector = BodyDetector()
-    self.__limit = 80
+    self.__limit = 50
   def __help(self) -> Gesture:
     if self.__res != {}:
       hand = self.__res[Gesture.RIGHTHAND]
