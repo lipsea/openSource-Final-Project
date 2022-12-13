@@ -1,7 +1,7 @@
 '''
 Author: linin00
 Date: 2022-12-13 00:16:05
-LastEditTime: 2022-12-13 03:24:05
+LastEditTime: 2022-12-13 22:55:28
 LastEditors: linin00
 Description: 
 FilePath: /open/Gesture/core/game.py
@@ -123,7 +123,7 @@ def my_wearing(body: BodyController, mqtt: Mqtt_async, prefix: str):
     showImage(img)
   cv2.destroyAllWindows() # 关闭窗口
 
-def my_fighting(voice, mqtt: Mqtt_async, prefix: str):
+def my_fighting(mqtt: Mqtt_async, prefix: str):
   print('fighting demo...')
   mqtt.PUB(Topic.SKILL, Msg.DEMO)
 
@@ -132,7 +132,6 @@ class PlayerController():
     self.playername = playername
     self.mqtt = Mqtt_async('dev.linin.xyz', 8302)
     self.bodyController = BodyController
-    self.voice = None
     self.prefix = self.playername+':'
 
     self.__wearingImpl = wearing
@@ -166,7 +165,7 @@ class PlayerController():
 
   def __fighting(self):
     print('Game on, enjoy the fight, warrior!!')
-    self.__fightingImpl(voice=self.voice, prefix=self.prefix, mqtt=self.mqtt) # 执行声音控制指令
+    self.__fightingImpl(prefix=self.prefix, mqtt=self.mqtt) # 执行声音控制指令
 
   def __gameOver(self):
     print('Game over')

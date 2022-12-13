@@ -1,2 +1,5 @@
 MC/__pycache__/function_MC.cpython-39.pyc
 MC/__pycache__/MC_utils.cpython-39.pyc
+MC/__pycache__/function_MC.cpython-310.pyc
+.gitignore
+MC/__pycache__/MC_utils.cpython-310.pyc

@@ -1,7 +1,7 @@
 '''
 Author: linin00
 Date: 2022-12-13 01:34:09
-LastEditTime: 2022-12-13 03:15:39
+LastEditTime: 2022-12-13 22:58:43
 LastEditors: linin00
 Description: 
 FilePath: /open/Gesture/core/function.py
@@ -45,3 +45,14 @@ def my_wearing(body: BodyController, mqtt: Mqtt_async, prefix: str):
     showImage(img)
     waitKey(1, 'q')
   destroy() # 关闭窗口
+
+from speech_utils import Speech
+def my_fighting(mqtt: Mqtt_async, prefix: str):
+  speech = Speech(mqtt=mqtt, prefix=prefix)
+  mqtt.SUB(Topic.GAMEOVER, Topic.GAMEOVER)
+  while True:
+    msg, topic = mqtt.getMsg()
+    if topic == Topic.GAMEOVER and msg == Msg.GAMEOVER:
+      mqtt.UNSUB(Topic.GAMEOVER) # 不再订阅，结束游戏
+      break
+    speech.listen() # 监听键盘任务
