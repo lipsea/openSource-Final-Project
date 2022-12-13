@@ -1,27 +1,24 @@
 import sys
 sys.path.append("MC")
 from MC_utils import *
+from Coord import *
 sys.path.append("Gesture/type")
 import Msg 
 
 origin = Vec3(553,8,1373)
 
-BlueMoon06 = {
-        "coord_boots" : [20006-origin.x,6-origin.y,19992-origin.z],
-        "coord_chestplate" : [20006-origin.x,6-origin.y,19988-origin.z],
-        "coord_helmet" : [20006-origin.x,6-origin.y,19986-origin.z],
-        "coord_ln" : [0,0,0],
-        "coord_tnt" : [0,0,0],
-        "coord_cage" : [0,0,0]   
-    }
-
 players = {
-    "BlueMoon06":BlueMoon06
-    
+    "BlueMoon06":BlueMoon06,
+    "User2":User2,
+    "User3":User3,
+    "User4":User4    
 }
 
 ready = {
     "BlueMoon06":[False,False,False],
+    "User2":[False,False,False],
+    "User3":[False,False,False],
+    "User4":[False,False,False]
 }
 
 def my_handleWearing(_players: list, msg: str) -> bool:
