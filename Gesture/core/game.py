@@ -1,7 +1,7 @@
 '''
 Author: linin00
 Date: 2022-12-13 00:16:05
-LastEditTime: 2022-12-13 22:55:28
+LastEditTime: 2022-12-14 00:08:11
 LastEditors: linin00
 Description: 
 FilePath: /open/Gesture/core/game.py
@@ -35,7 +35,7 @@ class MCController():
     print('hello, I am a MCController')
     self.mqtt = Mqtt_async('dev.linin.xyz', 8302)
     self.players = []
-    self.maxPlayers = 1
+    self.maxPlayers = 2
     self.handleWearing = handleWearing
     self.handleFighting = handleFighting
 
