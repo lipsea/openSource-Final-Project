@@ -5,8 +5,8 @@ from multipledispatch import dispatch
 from mcpi.vec3 import Vec3
 
 
-# server = Minecraft.create("dev.linin.xyz",8301)
-server = Minecraft.create("localhost",4711)
+server = Minecraft.create("dev.linin.xyz",8301)
+#server = Minecraft.create("localhost",4711)
 
 origin = Vec3(373,9,1317)
 
@@ -28,7 +28,7 @@ def getPos(id): # Get player pos from ID
     return server.entity.getPos(id)
 
 # Spells
-
+"""
 def spell_Cage(id): # Cast ice-cage at the provided player's pos
     pos = server.entity.getPos(id)
     server.entity.setPos(id,math.floor(pos.x)+0.5,pos.y,math.floor(pos.z)+0.5)
@@ -37,45 +37,73 @@ def spell_Cage(id): # Cast ice-cage at the provided player's pos
             for k in range (3):
                 server.setBlock(pos.x-1+i,pos.y+k,pos.z-1+j,79)
     server.setBlock(pos.x,pos.y+1,pos.z,8)
+    """
 
-# Cast TNT ring at the provided player's pos
-def spell_TNT(id):
+def spell_Cage(id,x,y,z):
+    server.setBlock(x,y,z,0)
+    server.setBlock(x,y,z,5)
+
+def spell_LN(id,x,y,z):
+    server.setBlock(x,y,z,0)
+    server.setBlock(x,y,z,5)
+
+def spell_TNT(id,x,y,z):
+    server.setBlock(x,y,z,0)
+    server.setBlock(x,y,z,5)
+
+def spell_FireBall(id):
     pos = server.entity.getPos(id)
-    server.spawnEntity(pos.x,pos.y,pos.z,20)
+    server.spawnEntity(pos.x,pos.y+1,pos.z,12)
+
+# Armor Animation    
+def armor_b(id,x,y,z):
+    server.setBlock(x,y,z,0)
+    server.setBlock(x,y,z,5)
+
+def armor_c(id,x,y,z):
+    server.setBlock(x,y,z,0)
+    server.setBlock(x,y,z,5)
+
+def armor_h(id,x,y,z):
+    server.setBlock(x,y,z,0)
+    server.setBlock(x,y,z,5)
 
 
+    
+if __name__ == '__main__':
 # Main Process
 
-username = "BlueMoon06"
-id = getID(username)
+    username = "BlueMoon06"
+    id = getID(username)
 
-CD_spell = 0 # Cooldown for normal spells, reach 50 to cast
-CD_ult = 0 # Cooldown for ult (TNT?), reach 200 to cast
-f_FB = False # Determine whether Fireball had been casted
-f_TNT = False # Determine whether TNT had been casted
-f_LN = False # Determine whether Lightning had been casted
+    CD_spell = 0 # Cooldown for normal spells, reach 50 to cast
+    CD_ult = 0 # Cooldown for ult (TNT?), reach 200 to cast
+    f_FB = False # Determine whether Fireball had been casted
+    f_TNT = False # Determine whether TNT had been casted
+    f_LN = False # Determine whether Lightning had been casted
 
-while True:
-    time.sleep(0.1)
-    CD_spell += 1
-    CD_ult += 1
-    pos = getPos(id)
 
-    # Reseting Command block
-    if f_FB:
-        server.setBlock(10002-origin.x,6-origin.y,9893-origin.z,0)
-        f_FB = False
+    while True:
+        time.sleep(0.1)
+        CD_spell += 1
+        CD_ult += 1
+        pos = getPos(id)
 
-    # Code for Testing
-    for text in server.events.pollChatPosts():
-        if text.message == "clear":
-            server.setBlocks(19647,1,18659,19657,6,18669,0)
-        if text.message == "cage":
-            spell_Cage(id)
-        if text.message == "FB":
-            server.setBlock(10002-origin.x,6-origin.y,9893-origin.z,76)
-            f_FB = True
-        if text.message == "Origin":
-            server.entity.setPos(id,0,0,0)
-        if text.message == "TNT":
-            spell_TNT(id)
+        # Reseting Command block
+        if f_FB:
+            server.setBlock(10002-origin.x,6-origin.y,9893-origin.z,0)
+            f_FB = False
+
+        # Code for Testing
+        for text in server.events.pollChatPosts():
+            if text.message == "clear":
+                server.setBlocks(19647,1,18659,19657,6,18669,0)
+            if text.message == "cage":
+                spell_Cage(id)
+            if text.message == "FB":
+                server.setBlock(10002-origin.x,6-origin.y,9893-origin.z,76)
+                f_FB = True
+            if text.message == "Origin":
+                server.entity.setPos(id,0,0,0)
+            if text.message == "Block":
+                server.setBlock(19997-origin.x,7-origin.y-6,19998-origin.z,5)
