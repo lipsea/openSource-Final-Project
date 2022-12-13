@@ -17,8 +17,9 @@ from cv2_utils import Camera, waitKey, showImage, FPS
 import time
 
 # 传入玩家列表和姿态信息，如果所有玩家都穿好了则返回真
-def my_handleWearing(players: dict, msg: str) -> bool:
+def my_handleWearing(players: list, msg: str) -> bool:
   print('players', players, 'Wearing', msg)
+  
   time.sleep(5) # 模拟玩家穿衣服的时间
   return True
 
