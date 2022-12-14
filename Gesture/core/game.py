@@ -1,7 +1,7 @@
 '''
 Author: linin00
 Date: 2022-12-13 00:16:05
-LastEditTime: 2022-12-14 00:08:11
+LastEditTime: 2022-12-14 17:23:53
 LastEditors: linin00
 Description: 
 FilePath: /open/Gesture/core/game.py
@@ -15,6 +15,9 @@ import Topic, Msg
 from mediapipe_utils import BodyController
 from cv2_utils import Camera, waitKey, showImage, FPS
 import time
+sys.path.append("MC")
+from function_MC import MC_Gameover
+from function_MC import players as MC_Players
 
 # 传入玩家列表和姿态信息，如果所有玩家都穿好了则返回真
 def my_handleWearing(players: list, msg: str) -> bool:
@@ -35,7 +38,7 @@ class MCController():
     print('hello, I am a MCController')
     self.mqtt = Mqtt_async('dev.linin.xyz', 8302)
     self.players = []
-    self.maxPlayers = 2
+    self.maxPlayers = 4
     self.handleWearing = handleWearing
     self.handleFighting = handleFighting
 
@@ -73,10 +76,12 @@ class MCController():
     while True:
       self.mqtt.PUB(Topic.ALLREADY, Msg.ALLREADY) # 通知：大家都穿好了
       skill, topic = self.mqtt.getMsg()
+      res = False
       if topic == Topic.SKILL:
         res = self.handleFighting(self.players, skill) # 处理玩家技能技能，如果游戏结束返回真
-        if res == True:
-          break
+      res = res or MC_Gameover(MC_Players.get("Global")) # 避免玩家不发技能时无法接受到退出游戏的消息
+      if res == True:
+        break
     self.mqtt.UNSUB(Topic.SKILL) # 取消订阅
 
   def gameOver(self): # 游戏结束，输出结果

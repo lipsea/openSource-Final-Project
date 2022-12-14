@@ -9,17 +9,17 @@ origin = Vec3(553,8,1373)
 
 players = {
     "BlueMoon06":User1,
-    "LLH":User2,
-    "User3":User3,
-    "User4":User4,
+    "LLH":User3,
+    "ZJT":User2,
+    "LSK":User4,
     "Global":Global
 }
 
 ready = {
     "BlueMoon06":[False,False,False],
     "LLH":[False,False,False],
-    "User3":[False,False,False],
-    "User4":[False,False,False]
+    "LSK":[False,False,False],
+    "ZJT":[False,False,False]
 }
 
 def my_handleWearing(_players: list, msg: str) -> bool:
@@ -49,6 +49,7 @@ def my_handleWearing(_players: list, msg: str) -> bool:
     
 def my_handleFighting(_players: dict, msg: str) -> bool:
     [username, skill] = msg.split(':')
+    print(msg)
     id = getID(username)
     if skill == Msg.FIREBALL:
         [x,y,z] = players.get(username).get("coord_FB")

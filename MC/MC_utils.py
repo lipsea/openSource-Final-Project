@@ -72,7 +72,8 @@ def armor_h(id,x,y,z):
 def MC_Gameover(coord: dict):
     [x_A,y_A,z_A] = coord.get("Team_A_Win")
     [x_B,y_B,z_B] = coord.get("Team_B_Win")
-    if server.getBlock(x_A,y_A,z_A) == 5 or server.getBlock(x_A,y_A,z_A) == 5:
+    if server.getBlock(x_A,y_A,z_A) == 5 or server.getBlock(x_B,y_B,z_B) == 5:
+        print('GameOver')
         return True
 
 
