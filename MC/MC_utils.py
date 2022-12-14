@@ -51,9 +51,9 @@ def spell_TNT(id,x,y,z):
     server.setBlock(x,y,z,0)
     server.setBlock(x,y,z,5)
 
-def spell_FireBall(id):
-    pos = server.entity.getPos(id)
-    server.spawnEntity(pos.x,pos.y+1,pos.z,12)
+def spell_FireBall(id,x,y,z):
+    server.setBlock(x,y,z,0)
+    server.setBlock(x,y,z,5)
 
 # Armor Animation    
 def armor_b(id,x,y,z):
@@ -68,10 +68,16 @@ def armor_h(id,x,y,z):
     server.setBlock(x,y,z,0)
     server.setBlock(x,y,z,5)
 
+# Game Over Criteria
+def MC_Gameover(coord: dict):
+    [x_A,y_A,z_A] = coord.get("Team_A_Win")
+    [x_B,y_B,z_B] = coord.get("Team_B_Win")
+    if server.getBlock(x_A,y_A,z_A) == 5 or server.getBlock(x_A,y_A,z_A) == 5:
+        return True
 
-    
-if __name__ == '__main__':
+
 # Main Process
+if __name__ == '__main__':
 
     username = "BlueMoon06"
     id = getID(username)

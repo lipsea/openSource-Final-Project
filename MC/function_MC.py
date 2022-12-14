@@ -8,10 +8,11 @@ import Msg
 origin = Vec3(553,8,1373)
 
 players = {
-    "BlueMoon06":BlueMoon06,
+    "BlueMoon06":User1,
     "LLH":User2,
     "User3":User3,
-    "User4":User4    
+    "User4":User4,
+    "Global":Global
 }
 
 ready = {
@@ -50,7 +51,8 @@ def my_handleFighting(_players: dict, msg: str) -> bool:
     [username, skill] = msg.split(':')
     id = getID(username)
     if skill == Msg.FIREBALL:
-        spell_FireBall(id)
+        [x,y,z] = players.get(username).get("coord_FB")
+        spell_FireBall(id,x,y,z)
     if skill == Msg.CAGE:
         [x,y,z] = players.get(username).get("coord_cage")
         spell_Cage(id,x,y,z)
@@ -60,4 +62,6 @@ def my_handleFighting(_players: dict, msg: str) -> bool:
     if skill == Msg.TNT:
         [x,y,z] = players.get(username).get("coord_tnt")
         spell_TNT(id,x,y,z)
+    if MC_Gameover(players.get("Global")):
+        return True
 
